@@ -1,0 +1,72 @@
+<!-- A section of the HTML that contains the form. -->
+<section class="container my-2 p-5 bg-secondary rounded">
+    <!-- Displaying the value of the variable `type` -->
+    <h1>{{ type }} User</h1>
+    <!-- Creating a form with the name `userForm` and when the form is submitted, it will call the function
+    `getDataForm()` -->
+    <form [formGroup]="userForm" (ngSubmit)="getDataForm()" class="pt-3 px-5">
+
+        <div class="my-5">
+            <div class="input-group">
+                <label for="first_name" class="form-label fw-bold">First Name: </label>
+                <input type="text" class="form-control rounded" id="first_name" placeholder="Luis"
+                    formControlName="first_name">
+            </div>
+            <!-- Displaying an error message if the field is required. -->
+            <p class="error" *ngIf="checkControl('first_name', 'required')">Required field</p>
+            <!-- Displaying a warning message if the length of the field is less than 3 characters. -->
+            <p class="text-warning" *ngIf="checkControl('first_name', 'minlength')">The length must be more thaan 3
+                characters.</p>
+        </div>
+
+        <div class="my-5">
+            <div class="input-group">
+                <label for="last_name" class="form-label fw-bold">Last Name: </label>
+                <input type="text" class="form-control rounded" id="last_name" placeholder="Zuniga"
+                    formControlName="last_name">
+            </div>
+            <!-- Displaying an error message if the field is required. -->
+            <p class="error" *ngIf="checkControl('last_name', 'required')">Required field</p>
+            <!-- Displaying a warning message if the length of the field is less than 3 characters. -->
+            <p class="text-warning" *ngIf="checkControl('last_name', 'minlength')">The length must be more than 3
+                characters. </p>
+        </div>
+
+        <div class="my-5">
+            <div class="input-group">
+                <label for="username" class="form-label fw-bold">Username: </label>
+                <input type="text" class="form-control rounded" id="username" placeholder="Luis25"
+                    formControlName="username">
+            </div>
+            <!-- Displaying an error message if the field is required. -->
+            <p class="error" *ngIf="checkControl('username', 'required')">Required field</p>
+        </div>
+
+        <div class="my-5">
+            <div class="input-group">
+                <label for="email" class="form-label fw-bold">Email: </label>
+                <input type="text" class="form-control rounded" id="email" placeholder="correo@gmail.com"
+                    formControlName="email">
+            </div>
+            <!-- Displaying an error message if the field is required. -->
+            <p class="error" *ngIf="checkControl('email', 'required')">Required field</p>
+            <!-- Checking if the email is correct. -->
+            <p class="text-warning" *ngIf="checkControl('email', 'pattern')">The email is incorrect.
+            </p>
+        </div>
+
+        <div class="my-5">
+            <div class="input-group">
+                <label for="image" class="form-label fw-bold">Image: </label>
+                <input type="text" class="form-control rounded" id="image" placeholder="wwww.google.com/image/4785698587"
+                    formControlName="image">
+            </div>
+            <!-- Displaying an error message if the field is required. -->
+            <p class="error" *ngIf="checkControl('image', 'required')">Required field</p>
+        </div>
+
+        <!-- Creating a button with the value of the variable `type` -->
+        <input type="submit" [value]="type" class="form-input-btn btn btn-primary mt-4" [disabled]="!userForm.valid">
+
+    </form>
+</section>

@@ -1,0 +1,16 @@
+/******* PAGINATION *************/
+/* Styling the current page number. */
+.currentActive {
+    width: fit-content;
+    height: fit-content;
+    padding: 7px 14px 7px 14px;
+    color: white;
+    background-color: #1f0441;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn_n{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}

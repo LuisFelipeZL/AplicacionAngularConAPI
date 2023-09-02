@@ -1,0 +1,36 @@
+<!-- This is a bootstrap class that creates a card with a margin bottom of 4. -->
+<div class="card_data mb-4">
+    <!-- A bootstrap class that makes the row have no margin. -->
+    <div class="container_card">
+        <!-- A bootstrap class that makes the column take up 4/12 of the screen. -->
+        <div class="col-md-4">
+            <!-- Using the `myUser` object to get the image and first name. -->
+            <img [src]="myUser.image" class="img_size " [alt]="myUser.first_name" data-bs-toggle="modal"
+                [attr.data-bs-target]="'#modal'+ myUser.id" role='button'>
+        </div>
+        <!-- Making the column take up 8/12 of the screen. -->
+        <div class="col-md-8 data_info">
+            <!-- A bootstrap class that creates a card body. -->
+            <div class="card-body">
+                <!-- Using the `myUser` object to get the first and last name. -->
+                <h5 class="card-title text-center data_text">{{ myUser.first_name }} {{myUser.last_name}}</h5>
+                <!-- Centering the buttons. -->
+                <div class="card-text d-flex justify-content-center align-items-center">
+                    <!-- Creating a button that will take you to the user page. -->
+                    <button class="btn m-1 btn_t" [routerLink]="['/user', myUser._id]"><i
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                    <!-- Creating a button that will take you to the update page. -->
+                    <button class="btn m-1 btn_t" [routerLink]="['/update', myUser._id]"><i
+                            class="fa-solid fa-arrows-rotate"></i></button>
+                    <!-- This is a button that will call the `deleteUser` function and pass in the
+                    `myUser.id` as a parameter. -->
+                    <button class="btn m-1 btn_t" (click)="deleteUser(myUser._id)"><i
+                            class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- This is a component that will be used to display the user's information in a modal. -->
+<app-user-popup [myUser]="myUser"></app-user-popup>
